@@ -18,6 +18,8 @@ export interface UserRegister extends LoginData {
   surname: string;
   email: string;
   role: string;
+  votesCast: string;
+  votesReceived: string;
   isVerified: boolean;
   companyName?: string;
   licenceNumber?: string;
