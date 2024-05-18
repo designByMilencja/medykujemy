@@ -1,12 +1,14 @@
+@import url("../styles/theme.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url("../styles/theme.css");
-
 body {
   font-family: "Inter", sans-serif;
+}
+h2 {
+  margin: 5px 0;
 }
 
 @layer utilities {
@@ -47,11 +49,7 @@ body {
   }
 
   .dark-gradient {
-    background: linear-gradient(
-            232deg,
-            rgba(23, 28, 35, 0.41) 0%,
-            rgba(19, 22, 28, 0.7) 100%
-    );
+    background: linear-gradient(232deg, rgba(23, 28, 35, 0.41) 0%, rgba(19, 22, 28, 0.7) 100%);
   }
 
   .tab {
@@ -64,16 +62,11 @@ body {
 }
 
 .active-theme {
-  filter: invert(53%) sepia(98%) saturate(3332%) hue-rotate(0deg)
-  brightness(104%) contrast(106%) !important;
+  filter: invert(53%) sepia(98%) saturate(3332%) brightness(104%) contrast(106%);
 }
 
 .light-gradient {
-  background: linear-gradient(
-          132deg,
-          rgba(247, 249, 255, 0.5) 0%,
-          rgba(229, 237, 255, 0.25) 100%
-  );
+  background: linear-gradient(132deg, rgba(247, 249, 255, 0.5) 0%, rgba(229, 237, 255, 0.25) 100%);
 }
 
 .primary-text-gradient {
@@ -141,12 +134,13 @@ code {
 
   color: inherit !important;
 }
+
 /* Markdown End */
 
 /* Clerk */
-.cl-internal-b3fm6y {
-  background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%) !important;
-}
+/*.cl-internal-b3fm6y {*/
+/*    background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%) !important;*/
+/*}*/
 
 .hash-span {
   margin-top: -140px;
@@ -163,4 +157,32 @@ code {
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.warning-message {
+  padding: 0.2rem 0.5rem;
+  text-align: right;
+  width: 300px;
+  font-size: small;
+  color: #f91014;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+input:-ms-input-placeholder {
+  color: #ff7000;
+}
+
+/* Dla niektórych wersji Internet Explorer */
+input::-ms-input-placeholder {
+  color: #ff7000;
+}
+
+/* Dla przeglądarek bazujących na Chromium (np. Google Chrome) */
+input:-webkit-autofill::first-line {
+  color: #ff7000 !important;
 }
