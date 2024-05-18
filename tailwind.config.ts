@@ -37,7 +37,7 @@ const config: Config = {
           500: "#7B8EC8",
           400: "#858EAD",
         },
-        "accent-blue": "#1DA1F2",
+        "accent-blue": "#016AAF",
       },
       fontFamily: {
         inter: ["var(--font-inter)"],
