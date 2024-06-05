@@ -39,8 +39,6 @@ const RegisterForm = () => {
       responsibilities: "",
       requirements: "",
       brandLink: "",
-      votesCast: "0",
-      votesReceived: "0",
     },
   });
 
@@ -86,7 +84,7 @@ const RegisterForm = () => {
   return (
     <form
       onSubmit={handleSubmit(handleSubmitForm)}
-      className="mt-[200px] flex flex-col items-center justify-center pb-[50px] dark:text-light-900"
+      className="card-wrapper mt-[90px] flex flex-col items-center justify-center rounded-[10px] p-5 dark:text-light-900 sm:px-11"
     >
       <h1 className="p-5 text-center text-xl tracking-wide">Rejestracja</h1>
       <Input
@@ -206,7 +204,7 @@ const RegisterForm = () => {
         <Link href="/sign-in" className="px-2 hover:text-primary-500">
           Zaloguj się
         </Link>
-        <Link href="/reset" className="px-2 hover:text-primary-500">
+        <Link href="/reset-confirm" className="px-2 hover:text-primary-500">
           Odzyskaj hasło
         </Link>
       </div>
