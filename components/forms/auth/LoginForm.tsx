@@ -6,15 +6,17 @@ import Button from "@/components/shared/Button";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const LoginForm = () => {
-  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
   const [error, setError] = useState<string>("");
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty, isValid },
+    formState: { isDirty, isValid, errors },
   } = useForm<LoginData>({
     reValidateMode: "onChange",
     mode: "onBlur",
@@ -23,23 +25,24 @@ const LoginForm = () => {
       password: "",
     },
   });
+
   const handleSubmitForm = async (data: LoginData) => {
     try {
       const response = await signIn("credentials", {
         email: data.email,
         password: data.password,
         redirect: false,
+        callbackUrl,
       });
-      console.log(response);
       if (response?.ok) {
-        router.push("/");
+        window.location.href = callbackUrl; // Użycie window.location.href do przekierowania
       } else {
         if (response?.error === "AccessDenied") {
           setError(
             "Sprawdź swoją skrzynkę odbiorczą i kliknij w link, aby potwierdzić swoje konto. Jeśli nie otrzymałeś jeszcze e-maila, sprawdź folder ze spamem.",
           );
         } else {
-          setError("Coś poszło nie tak, spróbuj ponownie później");
+          setError("Coś poszło nie tak, spróbuj ponownie później.");
         }
       }
     } catch (error) {
@@ -50,7 +53,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit(handleSubmitForm)}
-      className="flex flex-col items-center justify-center dark:text-light-900"
+      className="card-wrapper mt-[100px] flex flex-col items-center justify-center rounded-[10px] p-5 dark:text-light-900 sm:px-11"
     >
       <h1 className="p-5 text-center text-xl tracking-wide">Logowanie</h1>
       <Input
@@ -67,7 +70,6 @@ const LoginForm = () => {
       />
       <Input
         label="* Hasło"
-        required
         {...register("password", {
           required: "Hasło jest wymagane!",
         })}
@@ -86,4 +88,5 @@ const LoginForm = () => {
     </form>
   );
 };
+
 export default LoginForm;
