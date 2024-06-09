@@ -12,7 +12,7 @@ interface Props {
   }[];
   src: string;
   createdAt: string;
-  role: boolean;
+  role?: boolean;
 }
 const Article = ({ _id, title, tags, src, createdAt, desc, role }: Props) => {
   const options = { year: "numeric", month: "long", day: "numeric" };

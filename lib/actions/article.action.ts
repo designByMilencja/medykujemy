@@ -10,6 +10,7 @@ import {
   GetArticlesParams,
 } from "@/lib/actions/shared.types";
 import { revalidatePath } from "next/cache";
+import { getTagIdByName } from "@/lib/actions/tag.action";
 
 export async function getArticles(params: GetArticlesParams) {
   try {
@@ -102,5 +103,29 @@ export async function getArticleById(params: GetArticleByIdParams) {
   } catch (error) {
     console.log(error);
     throw error;
+  }
+}
+
+export async function getArticlesByTagName(tagName: string) {
+  const tagNameLow = tagName.toLowerCase();
+  const tagId = await getTagIdByName(tagNameLow);
+  if (!tagId) {
+    return [];
+  }
+
+  const articles = await Article.find({ tags: tagId }).populate("tags");
+  return articles;
+}
+
+export async function getLastAddedArticles() {
+  try {
+    await connectToDatabase();
+    const articles = await Article.find({}, { _id: 1, title: 1 })
+      .sort({ createdAt: -1 })
+      .limit(4);
+    return articles;
+  } catch (e) {
+    console.log("Error fetching articles", e);
+    throw e;
   }
 }
