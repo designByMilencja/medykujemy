@@ -7,7 +7,7 @@ interface Props {
 
 const Tag = ({ _id, name }: Props) => {
   return (
-    <Link href={`/tags/${_id}`} className="flex justify-between gap-2">
+    <Link href={`/articles/tag/${name}`} className="flex justify-between gap-2">
       <p className="subtle-medium background-light800_dark300 text-light400_light500 rounded-md border-none px-4 py-2 uppercase">
         {name}
       </p>
