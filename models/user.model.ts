@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, models, Document } from "mongoose";
+import { Schema, model, models, Document } from "mongoose";
 
 export interface IUser extends Document {
   id: string;
@@ -15,6 +15,7 @@ export interface IUser extends Document {
   licenceNumber?: string;
   companyName?: string;
   city: string;
+  salary: string;
   occupation: string;
   specialization: string;
   experience: string;
@@ -24,13 +25,8 @@ export interface IUser extends Document {
   responsibilities: string;
   requirements: string;
   brandLink: string;
-  votesCast: string;
-  votesReceived: string;
   accept: boolean;
 }
-
-mongoose.connect(process.env.MONGODB_URI as string);
-mongoose.Promise = global.Promise;
 
 export const UserSchema = new Schema<IUser>(
   {
@@ -49,14 +45,13 @@ export const UserSchema = new Schema<IUser>(
     occupation: String,
     specialization: String,
     hours: String,
+    salary: String,
     contractType: String,
     additional: String,
     responsibilities: String,
     requirements: String,
     experience: String,
     brandLink: String,
-    votesCast: String,
-    votesReceived: String,
     accept: Boolean,
     licenceNumber: {
       type: String,
@@ -76,5 +71,5 @@ export const UserSchema = new Schema<IUser>(
   },
 );
 
-const User = mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
+const User = models.User || model<IUser>("User", UserSchema);
 export { User };

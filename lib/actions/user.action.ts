@@ -50,6 +50,7 @@ export async function editEmployer(params: EditEmployerParams) {
       companyName,
       accept,
       role,
+      salary,
       requirements,
       occupation,
       specialization,
@@ -70,6 +71,7 @@ export async function editEmployer(params: EditEmployerParams) {
     user.occupation = occupation;
     user.specialization = specialization;
     user.responsibilities = responsibilities;
+    user.salary = salary;
     user.requirements = requirements;
     user.contractType = contractType;
     user.additional = additional;
