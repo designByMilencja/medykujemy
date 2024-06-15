@@ -10,13 +10,9 @@ import UserCard from "@/components/job/UserCard";
 
 const Job = async () => {
   const session = await getServerSession(options);
-  if (!session) {
-    redirect("/sign-in");
-  }
   const result = await getAllUsers({});
   const userId = session?.user?.id;
   const user = await getUserById({ userId });
-  console.log(user.accept, "mamy usera");
   const filteredUsers =
     session?.user?.role === "employee"
       ? result.users.filter((u) => u.role === "employer")
