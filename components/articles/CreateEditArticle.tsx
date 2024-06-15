@@ -51,6 +51,7 @@ const CreateEditArticle = ({ type, articleDetails }: Props) => {
     try {
       // make an async call to your API -> create a question
       // contain all form data
+      const lowercaseTags = values.tags.map((tag) => tag.toLowerCase());
 
       if (type === "edit") {
         await editArticle({
@@ -68,7 +69,7 @@ const CreateEditArticle = ({ type, articleDetails }: Props) => {
           image: values.image,
           description: values.description,
           desc: values.desc,
-          tags: values.tags,
+          tags: lowercaseTags,
           path: pathname,
         });
         router.push("/");
