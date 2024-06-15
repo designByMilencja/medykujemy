@@ -1,12 +1,12 @@
-"use client"
-import { useForm } from "react-hook-form"
-import { Reset } from "@/types"
-import Input from "@/components/forms/auth/Input"
-import Button from "@/components/shared/Button"
-import { useRouter } from "next/navigation"
+"use client";
+import { useForm } from "react-hook-form";
+import { Reset } from "@/types";
+import Input from "@/components/forms/auth/Input";
+import Button from "@/components/shared/Button";
+import { useRouter } from "next/navigation";
 
 const ResetEmailForm = () => {
-  const router = useRouter()
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -17,7 +17,7 @@ const ResetEmailForm = () => {
     defaultValues: {
       email: "",
     },
-  })
+  });
   const handleSubmitForm = async (data: Reset) => {
     try {
       const res = await fetch("/api/users/reset", {
@@ -26,21 +26,26 @@ const ResetEmailForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-      })
+      });
 
-      const response = await res.json()
+      const response = await res.json();
       if (response.success) {
-        router.push("/confirm-email")
+        router.push("/confirm-email");
       } else {
-        console.log("error", response?.message)
+        console.log("error", response?.message);
       }
     } catch (error: any) {
-      console.log("error", error?.message)
+      console.log("error", error?.message);
     }
-  }
+  };
   return (
-    <form onSubmit={handleSubmit(handleSubmitForm)} className="flex flex-col items-center justify-center dark:text-light-900">
-      <h1 className="p-5 text-center text-xl tracking-wide">Resetowanie hasła</h1>
+    <form
+      onSubmit={handleSubmit(handleSubmitForm)}
+      className="card-wrapper mt-[100px] flex flex-col items-center justify-center rounded-[10px] p-5 dark:text-light-900 sm:px-11"
+    >
+      <h1 className="p-5 text-center text-xl tracking-wide">
+        Resetowanie hasła
+      </h1>
       <Input
         label="* Email"
         type="email"
@@ -55,6 +60,6 @@ const ResetEmailForm = () => {
       />
       <Button disabled={!isDirty || !isValid} type="submit" text="Potwierdź" />
     </form>
-  )
-}
-export default ResetEmailForm
+  );
+};
+export default ResetEmailForm;
