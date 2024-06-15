@@ -13,8 +13,8 @@ import { revalidatePath } from "next/cache";
 export async function getNoticeById(params: GetNoticeByIdParams) {
   try {
     await connectToDatabase();
-    const { ownerId } = params;
-    const notice = await Notice.findById(ownerId);
+    const { noticeId } = params;
+    const notice = await Notice.findById(noticeId);
     return notice;
   } catch (e) {
     console.log("error z pobierania ogłoszenia", e);
@@ -25,10 +25,10 @@ export async function getNoticeById(params: GetNoticeByIdParams) {
 export async function updateNotice(params: UpdateNoticeParams) {
   try {
     await connectToDatabase();
-    const { ownerId, updateData, path } = params;
-    await Notice.findOneAndUpdate({ ownerId }, { updateData }, { new: true });
+    const { noticeId, updateData, path } = params;
+    await Notice.findOneAndUpdate({ noticeId }, { updateData }, { new: true });
     revalidatePath(path);
-    console.log("dane z update ogłoszenia", ownerId, updateData, path);
+    console.log("dane z update ogłoszenia", noticeId, updateData, path);
   } catch (e) {
     console.log("error z updatowania ogłoszenia", e);
     throw e;
@@ -38,8 +38,7 @@ export async function updateNotice(params: UpdateNoticeParams) {
 export async function deleteNotice(params: DeleteNoticeParams) {
   try {
     await connectToDatabase();
-    console.log(params, "params to delete");
-    const notice = await Notice.findOne({ _id: params });
+    const notice = await Notice.findOne({ noticeId: params });
     console.log("kasujemy ogłoszenie", notice);
     if (!notice) {
       throw new Error("Ogłoszenie o takim id nie zostało znalezione");
