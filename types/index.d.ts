@@ -18,8 +18,7 @@ export interface UserRegister extends LoginData {
   surname: string;
   email: string;
   role: string;
-  votesCast: string;
-  votesReceived: string;
+  salary: string;
   isVerified: boolean;
   companyName?: string;
   licenceNumber?: string;
@@ -39,6 +38,7 @@ export interface UserRegister extends LoginData {
   brandLink?: string;
   accept: false;
 }
+
 export interface ParamsProps {
   params: { id: string };
 }

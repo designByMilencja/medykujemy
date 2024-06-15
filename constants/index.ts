@@ -7,9 +7,20 @@ export const sidebarLinks: SidebarLink[] = [
     label: "Aktualności",
   },
   {
+    imgURL: "/assets/icons/newspaper.svg",
+    route: "/events",
+    label: "Wydarzenia",
+  },
+  {
     imgURL: "/assets/icons/briefcase.svg",
     route: "/jobs",
     label: "Praca",
+  },
+
+  {
+    imgURL: "/assets/icons/school.svg",
+    route: "/procedures",
+    label: "Procedury",
   },
   {
     imgURL: "/assets/icons/mail.svg",
@@ -28,6 +39,12 @@ export const sidebarLinksEmployer: SidebarLink[] = [
     route: "/jobs",
     label: "Praca",
   },
+
+  {
+    imgURL: "/assets/icons/school.svg",
+    route: "/procedures",
+    label: "Procedury",
+  },
   {
     imgURL: "/assets/icons/person.svg",
     route: "/account",
@@ -44,6 +61,11 @@ export const sidebarLinksEmployeeAdmin: SidebarLink[] = [
     imgURL: "/assets/icons/newspaper.svg",
     route: "/",
     label: "Aktualności",
+  },
+  {
+    imgURL: "/assets/icons/newspaper.svg",
+    route: "/events",
+    label: "Wydarzenia",
   },
   {
     imgURL: "/assets/icons/briefcase.svg",
