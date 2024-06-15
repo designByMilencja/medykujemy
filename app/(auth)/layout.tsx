@@ -1,6 +1,6 @@
-import React from "react"
-import Theme from "@/components/shared/navbar/Theme"
-import Logo from "@/components/shared/navbar/Logo"
+import React from "react";
+import Theme from "@/components/shared/navbar/Theme";
+import Logo from "@/components/shared/navbar/Logo";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -11,13 +11,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <Theme />
         </div>
       </nav>
-      <div className="flex">
-        <section className="flex h-screen flex-1 flex-col items-center justify-center px-6 pb-6 pt-36 max-md:pb-14 sm:px-14">
-          <div>{children}</div>
-        </section>
-      </div>
+      <section className="flex min-h-screen flex-1 flex-col items-center justify-center bg-transparent p-6">
+        <div>{children}</div>
+      </section>
     </main>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
