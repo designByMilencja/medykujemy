@@ -10,13 +10,14 @@ interface TagPageProps {
 
 const TagPage = async ({ params }: TagPageProps) => {
   const { tagName } = params;
-  const articles = await getArticlesByTagName(tagName);
+  const category = decodeURIComponent(tagName);
+  const articles = await getArticlesByTagName(category);
 
   return (
     <section>
       <h1 className="h1-bold text-dark100_light900">
         Artykuły z kategorii:{" "}
-        <span className="text-primary-500">{tagName}</span>
+        <span className="text-primary-500">{category.toUpperCase()}</span>
       </h1>
       <div className="mt-1 flex w-full flex-col gap-6">
         {articles.length > 0 ? (

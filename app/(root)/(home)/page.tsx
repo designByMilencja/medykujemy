@@ -5,7 +5,7 @@ import LocalSearch from "@/components/shared/search/LocalSearch";
 import { HomePageFilters } from "@/constants/filters";
 import { Metadata } from "next";
 import Link from "next/link";
-import { getArticles } from "@/lib/actions/articles.action";
+import { getArticles } from "@/lib/actions/article.action";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 import Empty from "@/components/shared/EmptySection";
@@ -18,8 +18,9 @@ export const metadata: Metadata = {
 
 const Home = async () => {
   const session = await getServerSession(options);
+  const admin = session?.user?.role === "admin";
 
-  const result = await getArticles({});
+  const articles = await getArticles({});
   // @ts-ignore
   return (
     <>
@@ -52,8 +53,8 @@ const Home = async () => {
       </div>
       <Filters filters={HomePageFilters} />
       <div className="mt-1 flex w-full flex-col gap-6">
-        {result.articles.length > 0 ? (
-          result.articles.map((article) => (
+        {articles.articles.length > 0 ? (
+          articles.articles.map((article) => (
             <Article
               key={article._id}
               desc={article.desc}
@@ -62,6 +63,7 @@ const Home = async () => {
               src={article.image}
               tags={article.tags}
               createdAt={article.createdAt}
+              role={admin}
             />
           ))
         ) : (

@@ -12,11 +12,9 @@ import Empty from "@/components/shared/EmptySection";
 
 const Procedures = async () => {
   const session = await getServerSession(options);
-  if (!session) {
-    redirect("/sign-in");
-  }
 
   const result = await getProcedures({});
+  const admin = session?.user?.role === "admin";
 
   return (
     <>
@@ -59,8 +57,8 @@ const Procedures = async () => {
               _id={procedure._id}
               title={procedure.title}
               src={procedure.image}
-              sources={procedure.sources}
               createdAt={procedure.createdAt}
+              role={admin}
             />
           ))
         ) : (
