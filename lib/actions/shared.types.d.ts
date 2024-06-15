@@ -1,4 +1,5 @@
 import { IUser } from "@/models/user.model";
+import { INotice } from "@/models/notice.model";
 // artykuły
 
 export interface CreateArticleParams {
@@ -40,6 +41,7 @@ export interface EditEmployerParams {
   specialization: string;
   responsibilities: string;
   requirements: string;
+  salary: string;
   contractType: string;
   hours: string;
   role: string;
@@ -119,20 +121,54 @@ export interface GetProcedureByIdParams {
 // ogłoszenie
 
 export interface UpdateNoticeParams {
-  ownerId: string;
-  updateData: Partial<IVotes>;
+  noticeId: string;
+  updateData: Partial<INotice>;
   path: string;
 }
 
 export interface GetNoticeByIdParams {
-  ownerId: string;
+  noticeId: string;
 }
 
 export interface DeleteNoticeParams {
-  ownerId: string;
+  noticeId: string;
 }
 
 export interface RemoveVoteParams {
   noticeId: string;
   userId: string;
+}
+
+// eventy
+
+export interface CreateEventParams {
+  title: string;
+  desc: string;
+  location: string;
+  time: string;
+  src: string;
+  date: string;
+  path: string;
+}
+
+export interface EditEventParams {
+  eventId?: string;
+  title: string;
+  desc: string;
+  location: string;
+  time: string;
+  src: string;
+  date: string;
+  path: string;
+}
+
+export interface GetEventsParams {
+  page?: number;
+  pageSize?: number;
+  searchQuery?: string;
+  filter?: string;
+}
+
+export interface GetEventByIdParams {
+  eventId: string;
 }
