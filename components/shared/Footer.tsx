@@ -33,8 +33,8 @@ const Footer = ({ className = "" }) => {
           .
         </p>
       </div>
-      <div className="flex items-center justify-center">
-        <p className="max-w-[1200px] text-center text-xs">
+      <div className="flex flex-col items-center justify-center gap-2 text-xs">
+        <p className="max-w-[1200px] text-center">
           © Zgodnie z Ustawa z dnia 4 lutego 1994 r. o prawie autorskim i
           prawach pokrewnych (t.j. Dz.U.2021.1062 t.j. z dnia 2021.06.14). o
           ochronie praw autorskich, materiały zawarte na stronie www.medykuj.pl
@@ -44,6 +44,14 @@ const Footer = ({ className = "" }) => {
           warsztatach/webinarach/aplikacji oraz nie mogą być przeprowadzane
           szkolenia wewnętrzne ani zewnętrzne o charakterze zarobkowym.
         </p>
+        <div className="flex gap-4">
+          <p>
+            Ikonki źródło <a href="https://ionic.io/ionicons">Ionicons</a>
+          </p>
+          <p>
+            Obrazki źródło <a href="https://pixabay.com/">Pixabay</a>
+          </p>
+        </div>
       </div>
     </footer>
   );
