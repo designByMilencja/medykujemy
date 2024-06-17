@@ -307,6 +307,7 @@ const CompanyForm = ({ userDetails, type }: JobProps) => {
                 <ReactQuill
                   className="no-focus paragraph-regular background-light700_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
                   {...field}
+                  value={field.value || ""}
                 />
               </FormControl>
               <FormMessage className="text-red-500" />
