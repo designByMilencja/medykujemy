@@ -7,7 +7,6 @@ import { getProcedures } from "@/lib/actions/procedure.action";
 import Procedure from "@/components/procedures/Procedure";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
-import { redirect } from "next/navigation";
 import Empty from "@/components/shared/EmptySection";
 
 const Procedures = async () => {
