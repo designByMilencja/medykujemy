@@ -1,8 +1,9 @@
-import CreateEditProcedure from "@/components/procedures/CreateEditProcedure"
-import React from "react"
+"use client";
+import CreateEditProcedure from "@/components/procedures/CreateEditProcedure";
+import React from "react";
 
 const page = () => {
-  return <CreateEditProcedure />
-}
+  return <CreateEditProcedure />;
+};
 
-export default page
+export default page;
