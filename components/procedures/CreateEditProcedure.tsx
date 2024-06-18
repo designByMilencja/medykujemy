@@ -18,8 +18,9 @@ import { ProcedureSchema } from "@/lib/validation";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { createProcedure, editProcedure } from "@/lib/actions/procedure.action";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface Props {
   type?: "edit";

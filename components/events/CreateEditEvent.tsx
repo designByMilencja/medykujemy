@@ -17,8 +17,9 @@ import { EventSchema } from "@/lib/validation";
 import { createEvent, editEvent } from "../../lib/actions/event.action";
 import { useRouter, usePathname } from "next/navigation";
 import "react-quill/dist/quill.snow.css";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
 
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 interface Props {
   type?: "edit";
   eventDetails?: string;
