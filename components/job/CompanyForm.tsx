@@ -322,7 +322,14 @@ const CompanyForm = ({ userDetails, type }: JobProps) => {
               <FormItem className="flex w-full items-center">
                 <FormControl className="mt-3.5">
                   <div>
-                    <input type="checkbox" {...field} />
+                    <input
+                      type="checkbox"
+                      checked={field.value}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      ref={field.ref}
+                      required
+                    />
                     <FormLabel className="paragraph-regular text-dark400_light800 ml-2">
                       Oświadczam, że zgadzam się na wyświetlenie moich danych na
                       stronie ogłoszeń

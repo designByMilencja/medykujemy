@@ -213,8 +213,9 @@ const CandidateForm = ({ type, userDetails }: JobProps) => {
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Input
-                  className="no-focus paragraph-regular background-light700_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
                   {...field}
+                  value={field.value ?? ""}
+                  className="no-focus paragraph-regular background-light700_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
                 />
               </FormControl>
               <FormMessage className="text-red-500" />
@@ -229,7 +230,14 @@ const CandidateForm = ({ type, userDetails }: JobProps) => {
               <FormItem className="flex w-full items-center">
                 <FormControl className="mt-3.5">
                   <div>
-                    <input type="checkbox" {...field} required />
+                    <input
+                      type="checkbox"
+                      checked={field.value}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      ref={field.ref}
+                      required
+                    />
                     <FormLabel className="paragraph-regular text-dark400_light800 ml-2">
                       Oświadczam, że zgadzam się na wyświetlenie moich danych na
                       stronie ogłoszeń

@@ -1,6 +1,5 @@
 import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
-import { redirect } from "next/navigation";
 import Link from "next/link";
 import LocalSearch from "@/components/shared/search/LocalSearch";
 import Filter from "@/components/shared/Filter";
@@ -12,7 +11,7 @@ const Job = async () => {
   const session = await getServerSession(options);
   const result = await getAllUsers({});
   const userId = session?.user?.id;
-  const user = await getUserById({ userId });
+  const user = userId ? await getUserById({ userId }) : null;
   const filteredUsers =
     session?.user?.role === "employee"
       ? result.users.filter((u) => u.role === "employer")
