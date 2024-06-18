@@ -19,8 +19,10 @@ import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { createArticle, editArticle } from "@/lib/actions/article.action";
 import { useRouter, usePathname } from "next/navigation";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface Props {
   type?: "edit";
