@@ -83,8 +83,8 @@ const EventCard = ({
           {ReactHtmlParser(desc)}
         </div>
         <p className="mb-1">
-          Serdecznie zapraszamy do dołączenia do wydarzenia, zapisy na mail:
-          kontakt@medykuj.pl
+          Serdecznie zapraszamy do dołączenia do wydarzenia, zapisy mailowe pod
+          adresem: kontakt@medykuj.pl
         </p>
         <p className="paragraph-medium min-h-[46px] w-full rounded-lg bg-primary-500 px-4 py-3 text-center text-light-900 hover:bg-primary-500 dark:bg-primary-500 dark:text-light-900">
           Zapisz się
