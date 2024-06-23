@@ -19,12 +19,10 @@ export const options: NextAuthOptions = {
 
         const { password, email } = credentials;
         try {
+          console.time("authorize"); // Start timer
+
           console.log("Connecting to the database...");
-          const foundUser = (await User.findOne({
-            email,
-          })
-            .lean()
-            .exec()) as {
+          const foundUser = (await User.findOne({ email }).lean().exec()) as {
             _id: string;
             name: string;
             email: string;
@@ -35,35 +33,32 @@ export const options: NextAuthOptions = {
 
           if (!foundUser) {
             console.log("No user found with the provided email.");
-
+            console.timeEnd("authorize"); // End timer in case of early return
             return null;
           }
 
-          if (foundUser) {
-            const match = await bcrypt.compare(
-              password ?? "",
-              foundUser.password,
-            );
-            if (match) {
-              console.log("User authenticated successfully.");
-
-              console.log(foundUser._id);
-              foundUser.password = "";
-              console.timeEnd("authorize"); // End timer
-
-              return {
-                id: foundUser?._id,
-                name: foundUser?.name,
-                email: foundUser?.email,
-                role: foundUser?.role,
-              };
-            } else {
-              console.log("Password does not match.");
-              return null;
-            }
+          const match = await bcrypt.compare(
+            password ?? "",
+            foundUser.password,
+          );
+          if (!match) {
+            console.log("Password does not match.");
+            console.timeEnd("authorize"); // End timer in case of early return
+            return null;
           }
+
+          console.log("User authenticated successfully.");
+          foundUser.password = "";
+          console.timeEnd("authorize"); // End timer
+          return {
+            id: foundUser._id,
+            name: foundUser.name,
+            email: foundUser.email,
+            role: foundUser.role,
+          };
         } catch (e) {
           console.error("Error in authorization:", e);
+          console.timeEnd("authorize"); // End timer in case of error
         }
         return null;
       },
@@ -92,19 +87,18 @@ export const options: NextAuthOptions = {
       if (user && "id" in user) {
         token.id = user.id;
       }
-
       return token;
     },
+
     async session({ session, token }) {
-      const newSession = {
+      return {
         ...session,
         user: {
           ...session.user,
-          role: token && "role" in token ? token.role : "",
-          id: token && "id" in token ? token.id : "",
+          role: token.role,
+          id: token.id,
         },
       };
-      return Promise.resolve(newSession);
     },
   },
   session: {
