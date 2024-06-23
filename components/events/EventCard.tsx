@@ -44,7 +44,7 @@ const EventCard = ({
             <Image
               src="/assets/icons/calendar.svg"
               width={20}
-              height={40}
+              height={20}
               alt="ikonka biura firmy"
             />
           </div>
@@ -55,7 +55,7 @@ const EventCard = ({
             <Image
               src="/assets/icons/time.svg"
               width={20}
-              height={40}
+              height={20}
               alt="ikonka biura firmy"
             />
           </div>
@@ -66,7 +66,7 @@ const EventCard = ({
             <Image
               src="/assets/icons/location.svg"
               width={20}
-              height={40}
+              height={20}
               alt="ikonka biura firmy"
             />
           </div>

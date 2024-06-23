@@ -14,7 +14,7 @@ const Footer = ({ className = "" }) => {
             href="https://medykuj.pl"
             className="text-primary-500 hover:underline"
           >
-            Medykuj.pl
+            Medykujemy.pl
           </a>
           . Wszelkie prawa zastrzeżone.
         </p>
