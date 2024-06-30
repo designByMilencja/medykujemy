@@ -10,8 +10,6 @@ import {
 import { revalidatePath } from "next/cache";
 import Source from "@/models/source.model";
 import { FilterQuery } from "mongoose";
-import Article from "@/models/article.model";
-import Tag from "@/models/tag.model";
 
 export async function getProcedures(params: GetProceduresParams) {
   try {

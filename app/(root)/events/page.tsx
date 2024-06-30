@@ -1,7 +1,6 @@
 import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 import Link from "next/link";
-import LocalSearch from "@/components/shared/search/LocalSearch";
 import Empty from "@/components/shared/EmptySection";
 import { getEvents } from "@/lib/actions/event.action";
 import EventCard from "@/components/events/EventCard";

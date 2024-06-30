@@ -1,7 +1,6 @@
 import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 import Link from "next/link";
-import LocalSearch from "@/components/shared/search/LocalSearch";
 import { getAllUsers, getUserById } from "@/lib/actions/user.action";
 import UserCard from "@/components/job/UserCard";
 
