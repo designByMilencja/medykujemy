@@ -6,7 +6,7 @@ const Logo = () => {
     <Link href="/" className="flex items-center gap-1">
       <Image src="/assets/icons/logo.svg" alt="Logo" width={53} height={53} />
       <p className="h2-bold font-poppins mx-[-5px] text-accent-blue  dark:text-light-900 max-sm:hidden">
-        MEDY<span className="text-primary-500">kujemy.pl</span>
+        Medykujemy.pl
       </p>
     </Link>
   );
