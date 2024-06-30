@@ -16,7 +16,7 @@ import { FilterQuery } from "mongoose";
 export async function getArticles(params: GetArticlesParams) {
   try {
     await connectToDatabase();
-    const { searchQuery } = params;
+    const { searchQuery, filter } = params;
     const query: FilterQuery<typeof Article> = {};
     if (searchQuery) {
       const regex = new RegExp(searchQuery, "i");
@@ -32,10 +32,22 @@ export async function getArticles(params: GetArticlesParams) {
         { tags: { $in: tagIds } },
       ];
     }
+    let sortOptions = {};
+    switch (filter) {
+      case "newest":
+        sortOptions = { createdAt: -1 };
+        break;
+      case "oldest":
+        sortOptions = { createdAt: 1 };
+        break;
+      default:
+        sortOptions = {};
+        break;
+    }
 
     const articles = await Article.find(query)
       .populate({ path: "tags", model: Tag })
-      .sort({ createdAt: -1 });
+      .sort(sortOptions);
     return { articles };
   } catch (error) {
     console.log(error);

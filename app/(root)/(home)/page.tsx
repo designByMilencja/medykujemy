@@ -23,6 +23,7 @@ const Home = async ({ searchParams }: SearchParamsProps) => {
 
   const articles = await getArticles({
     searchQuery: searchParams.q,
+    filter: searchParams.filter,
   });
   // @ts-ignore
   return (

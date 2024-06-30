@@ -15,6 +15,7 @@ const Procedures = async ({ searchParams }: SearchParamsProps) => {
 
   const procedures = await getProcedures({
     searchQuery: searchParams.q,
+    filter: searchParams.filter,
   });
   const admin = session?.user?.role === "admin";
 
