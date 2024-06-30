@@ -2,8 +2,6 @@ import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 import Link from "next/link";
 import LocalSearch from "@/components/shared/search/LocalSearch";
-import Filter from "@/components/shared/Filter";
-import { JobPageFilters } from "@/constants/filters";
 import { getAllUsers, getUserById } from "@/lib/actions/user.action";
 import UserCard from "@/components/job/UserCard";
 
@@ -46,19 +44,6 @@ const Job = async () => {
             </button>
           </Link>
         )}
-      </div>
-      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
-        <LocalSearch
-          route="/jobs"
-          iconPosition="left"
-          imgSrc="/assets/icons/search-outline.svg"
-          placeholder="Szukaj pracownika/pracodawcy"
-          otherClasses="flex-1"
-        />
-        <Filter
-          filters={JobPageFilters}
-          otherClasses="min-h-[56px] sm:min-w-[170px]"
-        />
       </div>
       <section className="mt-12 flex flex-wrap gap-4">
         {filteredUsers.length > 0 ? (

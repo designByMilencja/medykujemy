@@ -9,6 +9,7 @@ import { getArticles } from "@/lib/actions/article.action";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 import Empty from "@/components/shared/EmptySection";
+import { SearchParamsProps } from "@/types";
 
 export const metadata: Metadata = {
   title: "Strona główna | Aplikacja Medykuj",
@@ -16,17 +17,18 @@ export const metadata: Metadata = {
     "Medykuj to aplikacja mieszcząca oferty pracy i procedury dla zawodów medycznych.",
 };
 
-const Home = async () => {
+const Home = async ({ searchParams }: SearchParamsProps) => {
   const session = await getServerSession(options);
   const admin = session?.user?.role === "admin";
 
-  const articles = await getArticles({});
+  const articles = await getArticles({
+    searchQuery: searchParams.q,
+  });
   // @ts-ignore
   return (
     <>
       <div className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
         <h1 className="h1-bold text-dark100_light900">Aktualności medyczne</h1>
-
         {session?.user?.role === "admin" ? (
           <Link href="/articles/add" className="flex justify-end max-sm:w-full">
             <button className="primary-gradient m-2 min-h-[46px] rounded-lg px-4 py-3 text-light-900">
@@ -67,7 +69,7 @@ const Home = async () => {
             />
           ))
         ) : (
-          <Empty title="Nie mamy jeszcze opublikowanych artykułów" />
+          <Empty title="Brak artykułów" />
         )}
       </div>
     </>

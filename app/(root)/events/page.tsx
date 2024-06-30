@@ -28,15 +28,6 @@ const Page = async () => {
           ""
         )}
       </div>
-      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
-        <LocalSearch
-          route="/"
-          iconPosition="left"
-          imgSrc="/assets/icons/search-outline.svg"
-          placeholder="Szukaj wydarzenia"
-          otherClasses="flex-1"
-        />
-      </div>
       <div className="mt-1 flex w-full flex-col gap-6">
         {events.events.length > 0 ? (
           events.events.map((event) => (
