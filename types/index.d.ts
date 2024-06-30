@@ -47,3 +47,7 @@ export interface JobProps {
   userDetails?: string;
   type: "add" | "edit";
 }
+
+export interface SearchParamsProps {
+  searchParams: { [key: string]: string | undefined };
+}

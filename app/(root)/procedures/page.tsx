@@ -8,11 +8,14 @@ import Procedure from "@/components/procedures/Procedure";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 import Empty from "@/components/shared/EmptySection";
+import { SearchParamsProps } from "@/types";
 
-const Procedures = async () => {
+const Procedures = async ({ searchParams }: SearchParamsProps) => {
   const session = await getServerSession(options);
 
-  const result = await getProcedures({});
+  const procedures = await getProcedures({
+    searchQuery: searchParams.q,
+  });
   const admin = session?.user?.role === "admin";
 
   return (
@@ -34,7 +37,7 @@ const Procedures = async () => {
       </div>
       <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
         <LocalSearch
-          route="/"
+          route="/procedures"
           iconPosition="left"
           imgSrc="/assets/icons/search-outline.svg"
           placeholder="Szukaj procedury"
@@ -48,8 +51,8 @@ const Procedures = async () => {
       </div>
       <Filters filters={HomePageFilters} />
       <div className="mt-1 flex w-full flex-col gap-6">
-        {result.procedures.length > 0 ? (
-          result.procedures.map((procedure) => (
+        {procedures.procedures.length > 0 ? (
+          procedures.procedures.map((procedure) => (
             <Procedure
               key={procedure._id}
               desc={procedure.desc}
@@ -61,7 +64,7 @@ const Procedures = async () => {
             />
           ))
         ) : (
-          <Empty title="Nie mamy jeszcze opublikowanych procedur" />
+          <Empty title="Brak procedur" />
         )}
       </div>
     </>

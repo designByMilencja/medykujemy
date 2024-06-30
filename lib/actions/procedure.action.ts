@@ -9,11 +9,21 @@ import {
 } from "@/lib/actions/shared.types";
 import { revalidatePath } from "next/cache";
 import Source from "@/models/source.model";
+import { FilterQuery } from "mongoose";
+import Article from "@/models/article.model";
+import Tag from "@/models/tag.model";
 
 export async function getProcedures(params: GetProceduresParams) {
   try {
     await connectToDatabase();
-    const procedures = await Procedure.find({})
+    const { searchQuery } = params;
+    const query: FilterQuery<typeof Procedure> = {};
+    if (searchQuery) {
+      const regex = new RegExp(searchQuery, "i");
+      // Tworzenie wyrażenia regularnego
+      query.$or = [{ title: regex }, { desc: regex }];
+    }
+    const procedures = await Procedure.find(query)
       .populate({ path: "sources", model: Source })
       .sort({ createdAt: -1 });
     return { procedures };
