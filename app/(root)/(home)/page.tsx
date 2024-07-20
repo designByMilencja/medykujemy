@@ -7,11 +7,7 @@ export const metadata: Metadata = {
 };
 
 const Home = async () => {
-  return (
-    <>
-      <h1> Działa</h1>
-    </>
-  );
+  return <h1> Działa</h1>;
 };
 
 export default Home;
