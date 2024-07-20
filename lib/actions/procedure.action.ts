@@ -14,16 +14,28 @@ import { FilterQuery } from "mongoose";
 export async function getProcedures(params: GetProceduresParams) {
   try {
     await connectToDatabase();
-    const { searchQuery } = params;
+    const { searchQuery, filter } = params;
     const query: FilterQuery<typeof Procedure> = {};
     if (searchQuery) {
       const regex = new RegExp(searchQuery, "i");
       // Tworzenie wyrażenia regularnego
       query.$or = [{ title: regex }, { desc: regex }];
     }
+    let sortOptions = {};
+    switch (filter) {
+      case "newest":
+        sortOptions = { createdAt: -1 };
+        break;
+      case "oldest":
+        sortOptions = { createdAt: 1 };
+        break;
+      default:
+        sortOptions = {};
+        break;
+    }
     const procedures = await Procedure.find(query)
       .populate({ path: "sources", model: Source })
-      .sort({ createdAt: -1 });
+      .sort(sortOptions);
     return { procedures };
   } catch (error) {
     console.log(error);
