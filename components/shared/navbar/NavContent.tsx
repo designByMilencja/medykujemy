@@ -21,7 +21,6 @@ const NavContent = () => {
     : role === "employer"
       ? sidebarLinksEmployer
       : sidebarLinksEmployeeAdmin;
-  console.log(links);
   return (
     <section className="flex h-full flex-col gap-6 pt-16">
       {links.map((item) => {
@@ -37,7 +36,7 @@ const NavContent = () => {
               {" "}
               <Image
                 src={item.imgURL}
-                alt={item.label}
+                alt={item.alt}
                 width={20}
                 height={20}
                 className={`${isActive ? "" : "invert-colors"}`}
