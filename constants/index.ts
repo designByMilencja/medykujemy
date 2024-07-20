@@ -7,7 +7,7 @@ export const sidebarLinks: SidebarLink[] = [
     label: "Aktualności",
   },
   {
-    imgURL: "/assets/icons/newspaper.svg",
+    imgURL: "/assets/icons/calendar-events.svg",
     route: "/events",
     label: "Wydarzenia",
   },

@@ -27,7 +27,7 @@ const MobileNav = async () => {
         <Link href="/" className="flex items-center gap-1">
           <Image
             src="/assets/images/logo-pp.png"
-            alt="Logo"
+            alt="Logo Medykujemy.pl"
             width={53}
             height={53}
           />
