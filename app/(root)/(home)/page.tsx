@@ -9,7 +9,7 @@ import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 // import Empty from "@/components/shared/EmptySection";
-import { SearchParamsProps } from "@/types";
+// import { SearchParamsProps } from "@/types";
 import Pagination from "@/components/shared/Pagination";
 
 export const metadata: Metadata = {
@@ -18,10 +18,11 @@ export const metadata: Metadata = {
     "Medykuj to aplikacja mieszcząca oferty pracy i procedury dla zawodów medycznych.",
 };
 
-const Home = async ({ searchParams }: SearchParamsProps) => {
+const Home = async () => {
+  // { searchParams }: SearchParamsProps
   const session = await getServerSession(options);
-  const admin = session?.user?.role === "admin";
-
+  // const admin = session?.user?.role === "admin";
+  //
   // const articles = await getArticles({
   //   searchQuery: searchParams.q,
   //   filter: searchParams.filter,
@@ -57,22 +58,22 @@ const Home = async ({ searchParams }: SearchParamsProps) => {
       </div>
       <Filters filters={HomePageFilters} />
       {/* <div className="mt-1 flex w-full flex-col gap-6"> */}
-      {/*  {articles.articles.length > 0 ? ( */}
-      {/*    articles.articles.map((article) => ( */}
-      {/*      <Article */}
-      {/*        key={article._id} */}
-      {/*        desc={article.desc} */}
-      {/*        _id={article._id} */}
-      {/*        title={article.title} */}
-      {/*        src={article.image} */}
-      {/*        tags={article.tags} */}
-      {/*        createdAt={article.createdAt} */}
-      {/*        role={admin} */}
-      {/*      /> */}
-      {/*    )) */}
-      {/*  ) : ( */}
-      {/*    <Empty title="Brak artykułów" /> */}
-      {/*  )} */}
+      {/* {articles.articles.length > 0 ? ( */}
+      {/*   articles.articles.map((article) => ( */}
+      {/*     <Article */}
+      {/*       key={article._id} */}
+      {/*       desc={article.desc} */}
+      {/*       _id={article._id} */}
+      {/*       title={article.title} */}
+      {/*       src={article.image} */}
+      {/*       tags={article.tags} */}
+      {/*       createdAt={article.createdAt} */}
+      {/*       role={admin} */}
+      {/*     /> */}
+      {/*   )) */}
+      {/* ) : ( */}
+      {/*   <Empty title="Brak artykułów" /> */}
+      {/* )} */}
       {/* </div> */}
       <div className="mt-10">
         <Pagination isNext={true} pageNumber={12} />
