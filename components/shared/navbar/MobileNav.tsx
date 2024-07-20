@@ -17,7 +17,7 @@ const MobileNav = async () => {
           alt="Mobile menu icon"
           width={36}
           height={36}
-          className="invert-colors cursor-pointer rounded bg-primary-500 p-1 sm:hidden"
+          className="cursor-pointer rounded bg-accent-blue p-1 sm:hidden"
         />
       </SheetTrigger>
       <SheetContent
