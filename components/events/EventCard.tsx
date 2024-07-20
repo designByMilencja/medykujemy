@@ -1,5 +1,5 @@
 import React from "react";
-import ReactHtmlParser from "react-html-parser";
+// import ReactHtmlParser from "react-html-parser";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -79,8 +79,11 @@ const EventCard = ({
           className="my-1 h-[25vh] w-full max-w-[500px] rounded-lg bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url('${src}')` }}
         ></div>
+        {/* <div className="body-regular text-dark500_light700 my-2 max-w-[500px] flex-1 text-justify"> */}
+        {/*  {ReactHtmlParser(desc)} */}
+        {/* </div> */}
         <div className="body-regular text-dark500_light700 my-2 max-w-[500px] flex-1 text-justify">
-          {ReactHtmlParser(desc)}
+          {desc}
         </div>
         <p className="mb-1">
           Serdecznie zapraszamy do dołączenia do wydarzenia, zapisy mailowe pod

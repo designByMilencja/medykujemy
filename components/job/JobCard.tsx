@@ -1,7 +1,7 @@
 import { getUserById } from "@/lib/actions/user.action";
 import Link from "next/link";
 import React from "react";
-import ReactHtmlParser from "react-html-parser";
+// import ReactHtmlParser from "react-html-parser";
 import InfoItem from "./InfoItem";
 
 interface Props {
@@ -53,9 +53,10 @@ const JobCard = async ({ id }: Props) => {
             <h2 className="sm:h3-semibold base-semibold text-dark200_light900 max-w-[500px]">
               Doświadczenie:
             </h2>
-            <div className="text-dark100_light900 mt-5">
-              {ReactHtmlParser(user.experience)}
-            </div>
+            {/* <div className="text-dark100_light900 mt-5"> */}
+            {/*  {ReactHtmlParser(user.experience)} */}
+            {/* </div> */}
+            <div className="text-dark100_light900 mt-5">{user.experience}</div>
           </div>
           <div className="my-5">
             <p className="text-dark100_light900">{user.additional}</p>
@@ -115,16 +116,22 @@ const JobCard = async ({ id }: Props) => {
             <h2 className="sm:h3-semibold base-semibold text-dark200_light900 max-w-[500px]">
               Zakres obowiązków:
             </h2>
+            {/* <div className="text-dark100_light900 mt-5"> */}
+            {/*  {ReactHtmlParser(user.responsibilities)} */}
+            {/* </div> */}
             <div className="text-dark100_light900 mt-5">
-              {ReactHtmlParser(user.responsibilities)}
+              {user.responsibilities}
             </div>
           </div>
           <div className="my-5">
             <h2 className="sm:h3-semibold base-semibold text-dark200_light900 max-w-[500px]">
               Wymagania:
             </h2>
+            {/* <div className="text-dark100_light900 mt-5"> */}
+            {/*  {ReactHtmlParser(user.requirements)} */}
+            {/* </div> */}
             <div className="text-dark100_light900 mt-5">
-              {ReactHtmlParser(user.requirements)}
+              {user.requirements}
             </div>
           </div>
           <div className="my-5">
@@ -135,9 +142,10 @@ const JobCard = async ({ id }: Props) => {
               {user.salary ? user.salary : "-"}
             </div>
           </div>
-          <div className="text-dark100_light900 mb-5">
-            {ReactHtmlParser(user.additional)}
-          </div>
+          {/* <div className="text-dark100_light900 mb-5"> */}
+          {/*  {ReactHtmlParser(user.additional)} */}
+          {/* </div> */}
+          <div className="text-dark100_light900 mb-5">{user.additional}</div>
           <Link href={user.brandLink} className="flex">
             <button className="paragraph-medium min-h-[46px] w-full rounded-lg bg-primary-500 px-4 py-3 text-light-900 hover:bg-primary-500 dark:bg-primary-500 dark:text-light-900">
               Przejdź do strony firmy

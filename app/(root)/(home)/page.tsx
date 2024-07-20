@@ -10,6 +10,7 @@ import { getServerSession } from "next-auth";
 import { options } from "@/app/(auth)/api/auth/[...nextauth]/options";
 import Empty from "@/components/shared/EmptySection";
 import { SearchParamsProps } from "@/types";
+import Pagination from "@/components/shared/Pagination";
 
 export const metadata: Metadata = {
   title: "Strona główna | Aplikacja Medykuj",
@@ -72,6 +73,9 @@ const Home = async ({ searchParams }: SearchParamsProps) => {
         ) : (
           <Empty title="Brak artykułów" />
         )}
+      </div>
+      <div className="mt-10">
+        <Pagination isNext={true} pageNumber={12} />
       </div>
     </>
   );
