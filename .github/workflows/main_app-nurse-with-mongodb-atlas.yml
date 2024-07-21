@@ -8,6 +8,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+env:
+  MONGODB_URI: ${{ secrets.MONGODB_URI }}
+  DATABASE_NAME:  ${{ secrets.DATABASE_NAME }}
 
 jobs:
   build:
